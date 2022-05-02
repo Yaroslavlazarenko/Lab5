@@ -1,10 +1,9 @@
 public class Parallelepiped extends Rectangle {
     private double height;
 
-    public void setParallelepipedInfo(double height, double width, double length) {
+    public Parallelepiped(double length, double width, double height) {
+        super(length, width);
         this.height = height;
-        super.width = width;
-        super.length = length;
     }
 
     public void setParallelepipedHeight(double height) {

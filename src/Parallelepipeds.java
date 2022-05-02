@@ -4,11 +4,11 @@ public class Parallelepipeds {
 
     public Parallelepipeds(int amount) {
         parallelepipeds = new Parallelepiped[amount];
-        index=-1;
+        index = -1;
     }
 
     public void setParallelepiped(Parallelepiped pyramid) {
-        if(++index<parallelepipeds.length)
+        if (++index < parallelepipeds.length)
             this.parallelepipeds[index] = pyramid;
     }
 
@@ -16,11 +16,11 @@ public class Parallelepipeds {
         return this.parallelepipeds[index];
     }
 
-    public int getCountOfCubes(){
-        int countOfCubes=0;
+    public int getCountOfCubes() {
+        int countOfCubes = 0;
         for (int i = 0; i < index; i++) {
-            if((parallelepipeds[i].getParallelepipedHeight()==parallelepipeds[i].getParallelepipedWidth())&&
-                    (parallelepipeds[i].getParallelepipedWidth()==parallelepipeds[i].getParallelepipedLength()))
+            if ((parallelepipeds[i].getParallelepipedHeight() == parallelepipeds[i].getParallelepipedWidth()) &&
+                    (parallelepipeds[i].getParallelepipedWidth() == parallelepipeds[i].getParallelepipedLength()))
                 countOfCubes++;
         }
         return countOfCubes;

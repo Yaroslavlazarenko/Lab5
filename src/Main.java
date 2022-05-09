@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,7 +25,9 @@ public class Main {
         double rectangleHeight;
 
         final Rectangles rectangles = new Rectangles(N);
+        final RectanglesList rectanglesList = new RectanglesList();
         final Parallelepipeds parallelepipeds = new Parallelepipeds(M);
+        final ParallelepipedsList parallelepipedsList = new ParallelepipedsList();
 
         //fill rectangles
 
@@ -37,10 +40,14 @@ public class Main {
             rectangleWidth = scanner.nextDouble();
         } while (!Untiled.correctSide(rectangleWidth));
         rectangles.setRectangle(new Rectangle(rectangleLength, rectangleWidth));
+        rectanglesList.add(new Rectangle(rectangleLength, rectangleWidth));
 
-        for (int i = 1; i < N; i++)
-            rectangles.setRectangle(new Rectangle(Math.random() * 20 + 1, Math.random() * 20 + 1));
-
+        for (int i = 1; i < N; i++) {
+            rectangleLength = Math.random() * 20 + 1;
+            rectangleWidth = Math.random() * 20 + 1;
+            rectangles.setRectangle(new Rectangle(rectangleLength, rectangleWidth));
+            rectanglesList.add(new Rectangle(rectangleLength, rectangleWidth));
+        }
 
         do {
             System.out.print("Enter a parallelepiped height: ");
@@ -55,12 +62,17 @@ public class Main {
             rectangleLength = scanner.nextDouble();
         } while (!Untiled.correctSide(rectangleLength));
         parallelepipeds.setParallelepiped(new Parallelepiped(rectangleHeight, rectangleWidth, rectangleLength));
+        parallelepipedsList.add(new Parallelepiped(rectangleHeight, rectangleWidth, rectangleLength));
 
-        for (int i = 1; i < M; i++)
-            parallelepipeds.setParallelepiped(new Parallelepiped(Math.random() * 20 + 1, Math.random() * 20 + 1, Math.random() * 20 + 1));
+        for (int i = 1; i < M; i++) {
+            rectangleHeight = Math.random() * 20 + 1;
+            rectangleWidth = Math.random() * 20 + 1;
+            rectangleLength = Math.random() * 20 + 1;
+            parallelepipeds.setParallelepiped(new Parallelepiped(rectangleHeight, rectangleWidth, rectangleLength));
+            parallelepipedsList.add(new Parallelepiped(rectangleHeight, rectangleWidth, rectangleLength));
+        }
 
-        System.out.println("Количество прямоугольников площадь которых больше средней площади всех: " + rectangles.getRectanglesMoreAverageArea());
-
-        System.out.println("Количество кубов: " + parallelepipeds.getCountOfCubes());
+        System.out.println(rectanglesList);
+        System.out.println(parallelepipedsList);
     }
 }
